@@ -1,0 +1,4 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <item name="TAG_IS_INVITED" type="id"/>
+    <item name="TAG_FRIEND_NAME" type="id"/>
+</resources>

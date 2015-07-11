@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General -->
+    <color name="white">#ffffff</color>
+    <color name="username_text">#222222</color>
+    <color name="password_text">#222222</color>
+    <color name="hint_username_text">#999999</color>
+    <color name="hint_password_text">#999999</color>
+
+    <!-- Login Activity -->
+    <color name="login_bg">#2088B2</color>
+    <color name="btn_login_bg">#82C341</color>
+    <color name="btn_login_border">#ffffff</color>
+
+    <!-- Register Activity -->
+    <color name="registerBG">#666699</color>
+    <color name="btn_register_bg">#394BA0</color>
+    <color name="btn_register_border">#ffffff</color>
+
+    <!-- Chat Activity -->
+    <color name="chatRoomBG">#99CCCC</color>
+    <color name="clientCountText">#222222</color>
+    <color name="chatMsg">#222222</color>
+    <color name="chatMsgBox">#CCCCCC</color>
+    <color name="send_btn_text">#1267DB</color>
+    <color name="send_btn">#D8D8D8</color>
+
+    <!-- Message Text -->
+    <color name="self">#860506</color>
+    <color name="others">#1267D8</color>
+</resources>

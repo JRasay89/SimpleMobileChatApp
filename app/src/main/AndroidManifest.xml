@@ -1,0 +1,77 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.simplechatapp.john.simplemobilechatapp">
+
+    <!-- Permission to access the internet-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application android:allowBackup="true"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher">
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".LoginActivity"
+            android:label="Login"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Register Activity -->
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Register"
+            android:launchMode="singleTop"/>
+        
+        <!-- Main Chat Activity -->
+        <activity
+            android:name=".MainChatMenuActivity"
+            android:label="Main Chat"
+            android:launchMode="singleTop"/>
+
+        <!-- ChatRoom Activity -->
+        <activity
+            android:name=".ChatRoomsActivity"
+            android:label="Chat Rooms"
+            android:parentActivityName=".MainChatMenuActivity"
+            android:launchMode="singleTop"/>
+
+        <!-- Create ChatRoom Activity -->
+        <activity
+            android:name=".CreateChatRoomActivity"
+            android:label="Create Chat Room"
+            android:launchMode="singleTop"/>
+
+        <!-- Chat Activity -->
+        <activity
+            android:name=".ChatActivity"
+            android:label="Chat"
+            android:parentActivityName=".ChatRoomsActivity"
+            android:launchMode="singleTop"/>
+
+        <!-- Friend Activity -->
+        <activity
+            android:name=".FriendsActivity"
+            android:label="Friends"
+            android:parentActivityName=".MainChatMenuActivity"
+            android:launchMode="singleTop"/>
+
+        <!-- Search Activity -->
+        <activity
+            android:name=".SearchActivity"
+            android:label="Search"
+            android:parentActivityName=".MainChatMenuActivity"
+            android:launchMode="singleTop"/>
+
+        <!-- Invites Activity -->
+        <activity
+            android:name=".InvitesActivity"
+            android:label="Invites"
+            android:parentActivityName=".MainChatMenuActivity"
+            android:launchMode="singleTop"/>
+
+    </application>
+
+</manifest>

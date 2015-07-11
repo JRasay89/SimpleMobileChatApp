@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2">
+
+    <EditText
+        android:id="@+id/createChatRoom_myRoomNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter chat room name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Add friends to chat"/>
+    
+    <ListView
+        android:id="@+id/createChatRoom_myFriendsListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/createChatRoom_myCancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel"/>
+
+        <Button
+            android:id="@+id/createChatRoom_myFinishButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Finish"/>
+
+    </LinearLayout>
+
+</LinearLayout>

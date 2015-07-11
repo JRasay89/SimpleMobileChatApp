@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/registerBG">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <!-- Registration form text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_form"
+            android:textSize="35dp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="40dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <!-- Username input box -->
+        <EditText
+            android:id="@+id/register_myUsernameText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_username"
+            android:background="@drawable/inputbox_border"
+            android:textColor="@color/username_text"
+            android:textColorHint="@color/hint_username_text"
+            android:padding="10dp"
+            android:layout_marginBottom="25dp" />
+
+        <!-- Password input box -->
+        <EditText
+            android:id="@+id/register_myPasswordText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:hint="@string/hint_password"
+            android:background="@drawable/inputbox_border"
+            android:textColor="@color/password_text"
+            android:textColorHint="@color/hint_password_text"
+            android:padding="10dp"
+            android:layout_marginBottom="50dp" />
+
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/register_myRegisterButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_register"
+            android:textColor="@color/white"
+            android:background="@drawable/register_btn_shape"
+            android:width="250dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <!-- Link button to login page -->
+        <Button
+            android:id="@+id/register_myLoginLinkButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dip"
+            android:background="@null"
+            android:text="@string/btn_link_to_login"
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+</LinearLayout>

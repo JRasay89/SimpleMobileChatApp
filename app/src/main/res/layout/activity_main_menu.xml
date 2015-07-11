@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/myTestText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World"/>
+    <Button
+        android:id="@+id/mainMenu_ChatsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chats"/>
+    <Button
+        android:id="@+id/mainMenu_FriendsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friends"/>
+    <Button
+        android:id="@+id/mainMenu_SearchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"/>
+    <Button
+        android:id="@+id/mainMenu_InvitesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invites"/>
+
+
+
+</LinearLayout>
