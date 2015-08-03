@@ -16,9 +16,12 @@ import com.simplechatapp.john.simplemobilechatapp.manager.SessionManager;
  * Created by John on 5/27/2015.
  */
 public class MainChatMenuActivity extends Activity {
+    private static final String TAG = MainChatMenuActivity.class.getSimpleName();
 
+    private String currentUser;
     private SQLiteHandler databaseHandler;
     private SessionManager sessionManager;
+
 
     private Button chatsButton;
     private Button friendsButton;
@@ -30,6 +33,7 @@ public class MainChatMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        currentUser = getIntent().getStringExtra("username");
         databaseHandler = new SQLiteHandler(this);
         sessionManager = new SessionManager(this);
 
