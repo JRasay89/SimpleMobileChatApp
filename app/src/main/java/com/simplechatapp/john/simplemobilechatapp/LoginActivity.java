@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import com.simplechatapp.john.simplemobilechatapp.config.AppConfig;
 import com.simplechatapp.john.simplemobilechatapp.helper.ClientHttpRequest;
+import com.simplechatapp.john.simplemobilechatapp.helper.MyProgressDialog;
 import com.simplechatapp.john.simplemobilechatapp.manager.SQLiteConnect;
-import com.simplechatapp.john.simplemobilechatapp.manager.SQLiteHandler;
 import com.simplechatapp.john.simplemobilechatapp.manager.SessionManager;
 import com.simplechatapp.john.simplemobilechatapp.other.Method;
 
@@ -32,7 +32,6 @@ import java.util.List;
 public class LoginActivity extends Activity {
 
     //SQLiteHandler
-    private SQLiteHandler databaseHandler;
     private SQLiteConnect sqLiteConnect;
 
     //SessionManager
@@ -54,7 +53,6 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         //Initialize database handler
-        databaseHandler = new SQLiteHandler(this);
         sqLiteConnect = SQLiteConnect.getInstance(getApplication());
 
         //Initialize session manager
@@ -115,48 +113,37 @@ public class LoginActivity extends Activity {
 
     }
 
-    public SQLiteHandler getDatabaseHandler() {
-        return this.databaseHandler;
-    }
-
-    public SessionManager getSessionManager() {
-        return this.sessionManager;
-    }
-
-
     /**
      * Verify the username and password by checking the mysql db
      * @param username of the account
      * @param password of the account
      */
     private void checkLogin(String username, String password) {
-        new AuthenticateClient(this).execute(username, password);
+        new AuthenticateClient().execute(username, password);
     }
 
-    private class AuthenticateClient extends AsyncTask<String, Void, String> {
-        private final String TAG = AuthenticateClient.class.getSimpleName();
-
+    public class AuthenticateClient extends AsyncTask<String, Void, String> {
+        private  final String TAG = AuthenticateClient.class.getSimpleName();
 
         // Progress Dialog
-        private ProgressDialog pDialog;
+        private MyProgressDialog progressDialog;
 
         //Use to make http request
         private ClientHttpRequest clientHttpRequest;
 
-        //Reference to LoginActivity
-        private LoginActivity loginActivity;
 
-        public AuthenticateClient(Activity activity) {
-            loginActivity = (LoginActivity) activity;
-            pDialog = new ProgressDialog(loginActivity);
+        public AuthenticateClient() {
+            progressDialog = new MyProgressDialog(LoginActivity.this);
             clientHttpRequest = new ClientHttpRequest();
+
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog.setMessage("Logging in...");
-            showDialog();
+            progressDialog.setMessage("Logging in...");
+            progressDialog.showDialog();
+
 
         }
 
@@ -180,25 +167,27 @@ public class LoginActivity extends Activity {
                 if (!error) {
 
                     JSONObject user = jsonObject.getJSONObject("user");
-                    String currentUser = user.getString("username");
-                    String currentUserPassword = user.getString("password");
+                    String clientUsername = user.getString("username");
+                    String clientPassword = user.getString("password");
 
-                    loginActivity.getSessionManager().setLogin(true);
-                    sqLiteConnect.addUser(currentUser, currentUserPassword);
+
+                    sessionManager.setLogin(true);
+                    //Store client name and password in local database
+                    sqLiteConnect.addUser(clientUsername, clientPassword);
 
                     //Open Chat Activity
-                    Intent intent = new Intent(loginActivity, MainChatMenuActivity.class);
-                    intent.putExtra("username", currentUser);
-                    loginActivity.startActivity(intent);
-                    loginActivity.finish();
+                    Intent intent = new Intent(LoginActivity.this, MainChatMenuActivity.class);
+                    intent.putExtra("username", clientUsername);
+                    LoginActivity.this.startActivity(intent);
+                    LoginActivity.this.finish();
                 }
                 else {
                     //Display error message
                     final String errorMsg = jsonObject.getString("error_msg");
-                    loginActivity.runOnUiThread(new Runnable() {
+                    LoginActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(loginActivity, errorMsg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, errorMsg, Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -213,23 +202,12 @@ public class LoginActivity extends Activity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            hideDialog();
+            progressDialog.hideDialog();
+
         }
 
 
-        private void showDialog() {
-            if (!pDialog.isShowing()) {
-                pDialog.show();
-            }
-        }
 
-        private void hideDialog() {
-            if (pDialog.isShowing()) {
-                pDialog.dismiss();
-            }
-        }
 
     }
-
-
 }
