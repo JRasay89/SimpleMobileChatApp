@@ -1,6 +1,7 @@
 package com.simplechatapp.john.simplemobilechatapp.cutomadapter;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,10 +64,12 @@ public class ChatRoomFriendListAdapter extends BaseAdapter {
                     createChatRoomActivity.getfriendsToInviteList().add((String) myInviteFriendButton.getTag(R.id.TAG_FRIEND_NAME));
                     myInviteFriendButton.setTag(R.id.TAG_IS_INVITED, true);
                     myInviteFriendButton.setText("Uninvite");
+                    Log.d(TAG, "Friend Invited");
                 } else {
                     createChatRoomActivity.getfriendsToInviteList().remove((String) myInviteFriendButton.getTag(R.id.TAG_FRIEND_NAME));
                     myInviteFriendButton.setText("Invite");
                     myInviteFriendButton.setTag(R.id.TAG_IS_INVITED, false);
+                    Log.d(TAG, "Friend Uninvited");
                 }
 
             }

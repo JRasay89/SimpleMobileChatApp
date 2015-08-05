@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class SQLiteConnect {
     private static SQLiteConnect sqLiteConnect = null;
-    private SQLiteHandler sqLiteHandler = null;
-    private Map<String, String> myUser = null;
+    private static SQLiteHandler sqLiteHandler = null;
+    private static Map<String, String> myUser = null;
 
     private SQLiteConnect(Context context) {
         sqLiteHandler = new SQLiteHandler(context);
@@ -21,7 +21,16 @@ public class SQLiteConnect {
         if (sqLiteConnect == null) {
             sqLiteConnect = new SQLiteConnect(context);
         }
+
         return sqLiteConnect;
+    }
+
+
+    public void checkLoggedInStatus(boolean isLoggedIn) {
+        if (isLoggedIn) {
+            myUser = new HashMap<>();
+            myUser = sqLiteHandler.getUser();
+        }
     }
 
     public void addUser(String username, String password) {

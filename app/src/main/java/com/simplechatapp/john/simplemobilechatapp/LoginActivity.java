@@ -58,6 +58,7 @@ public class LoginActivity extends Activity {
         //Initialize session manager
         sessionManager = new SessionManager(this);
         if (sessionManager.isLoggedIn()) {
+            sqLiteConnect.checkLoggedInStatus(true);
             Intent intent = new Intent(LoginActivity.this, MainChatMenuActivity.class);
             startActivity(intent);
             finish();
